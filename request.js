@@ -1,6 +1,5 @@
 class Request {
     constructor(req) {
-        
         this._body = req;
     }
 
@@ -8,21 +7,39 @@ class Request {
         return this._body;
     }
 
-    get query() {
-        return this.body.query;
+    get inquire() {
+        return this.body.inquire;
     }
+
 
     get session() {
         return this.body.session;
     }
 
-    get appId() {
-        return this.session.application.app_id;
+    get isNewSession() {
+        return this.session.isNew
     }
 
-    get user() {
-        return this.session.user;
+    get sessionId() {
+        return this.session.sessionId
     }
+    
+    get endpoint() {
+        return this.body.endpoint
+    }
+
+    get appId() {
+        return this.endpoint.auth.application.appId;
+    }
+
+    get deviceId() {
+        return this.endpoint.device.deviceId;
+    }
+
+    get userId() {
+        return this.endpoint.auth.user.userId
+    }
+
 
     get context() {
         return this.body.context;

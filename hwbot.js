@@ -49,7 +49,8 @@ class HwBot {
         }
         let that = this;
         return (req, res) => {
-            if (req.headers['content-type'].indexOf('application/json') === -1) {
+            if (!req.headers['content-type']
+                || req.headers['content-type'].indexOf('application/json') === -1) {
                 responseJson(res, {cause : 'incorrect content type, wish json!'}, 404);
                 return;
             }
