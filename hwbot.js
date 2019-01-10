@@ -41,6 +41,7 @@ class HwBot {
 
         const responseJson = (res, data, statusCode = 200) => {
             const body = JSON.stringify(data);
+            debug('resonse data', data, statusCode)
             res.writeHead(statusCode, {
                 'Content-Length': Buffer.byteLength(body),
                 'Content-Type': 'application/json' });
@@ -48,8 +49,7 @@ class HwBot {
         }
         let that = this;
         return (req, res) => {
-            debug('receive parameter:', req)
-            if (req.headers['content-type'] !== 'application/json') {
+            if (req.headers['content-type'].indexOf('application/json') === -1) {
                 responseJson(res, {cause : 'incorrect content type, wish json!'}, 404);
                 return;
             }
