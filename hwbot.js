@@ -1,9 +1,9 @@
 const compose = require('koa-compose');
 const Context = require('./context');
 const Request = require('./request');
-const debug   = require('debug')('aixbot:Aixbot');
+const debug   = require('debug')('hwBot:Hwbot');
 
-class AixBot {
+class HwBot {
     constructor(appId = null) {
         this.appId = appId;
         this.middlewares = [];
@@ -206,4 +206,4 @@ class AixBot {
     }    
 }
 
-module.exports = AixBot;
+module.exports = HwBot;

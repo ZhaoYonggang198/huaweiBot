@@ -1,9 +1,9 @@
-const AixBot = require('../aixbot');
+const HwBot = require('../hwbot');
 
-const aixbot = new AixBot();
+const hwbot = new HwBot();
 
 // define middleware
-aixbot.use(async (ctx, next) => {
+hwbot.use(async (ctx, next) => {
     console.log(`process request for '${ctx.request.query}' ...`);
     var start = new Date().getTime();
     await next();
@@ -11,7 +11,7 @@ aixbot.use(async (ctx, next) => {
     console.log(`... response in duration ${execTime}ms`);
 });
 
-aixbot.use(async (ctx, next) => {
+hwbot.use(async (ctx, next) => {
     ctx.db = {
         username : 'Bowen'
     };
@@ -19,27 +19,27 @@ aixbot.use(async (ctx, next) => {
 });
 
 // define event handler
-aixbot.onEvent('enterSkill', (ctx) => {
+hwbot.onEvent('enterSkill', (ctx) => {
     ctx.query('你好');
 });
 
 // define text handler
-aixbot.hears('你是谁', (ctx) => {
+hwbot.hears('你是谁', (ctx) => {
     ctx.speak(`我是${ctx.db.username}`).wait();
 });
 
 // define regex handler
-aixbot.hears(/\W+/, (ctx) => {
+hwbot.hears(/\W+/, (ctx) => {
     ctx.speak(ctx.request.query);
 });
 
 // close session
-aixbot.onEvent('quitSkill', (ctx) => {
+hwbot.onEvent('quitSkill', (ctx) => {
     ctx.reply('再见').closeSession();
 });
 
 // define error handler
-aixbot.onError((err, ctx) => {
+hwbot.onError((err, ctx) => {
     logger.error(`error occurred: ${err}`);
     ctx.reply('内部错误，稍后再试').closeSession();
 });
