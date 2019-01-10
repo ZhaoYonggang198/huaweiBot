@@ -48,6 +48,7 @@ class HwBot {
         }
         let that = this;
         return (req, res) => {
+            debug('receive parameter:', req)
             if (req.headers['content-type'] !== 'application/json') {
                 responseJson(res, {cause : 'incorrect content type, wish json!'}, 404);
                 return;
