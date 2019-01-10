@@ -86,6 +86,7 @@ class HwBot {
 
     async handleRequest(request, handler) {
         if (!handler) handler = this.getFinalHandler();
+        debug('receive request,', JSON.stringify(request))
         let req = new Request(request);
         let ctx = new Context(req);
         await handler(ctx);
