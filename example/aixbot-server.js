@@ -45,4 +45,4 @@ hwbot.onError((err, ctx) => {
 });
 
 // run http server
-aixbot.run(8080);
+hwbot.run(8080);
