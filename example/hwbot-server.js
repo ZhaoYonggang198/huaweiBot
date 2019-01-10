@@ -40,7 +40,7 @@ hwbot.onEvent('quitSkill', (ctx) => {
 
 // define error handler
 hwbot.onError((err, ctx) => {
-    logger.error(`error occurred: ${err}`);
+    console.error(`error occurred: ${err}`);
     ctx.reply('内部错误，稍后再试').closeSession();
 });
 
