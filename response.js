@@ -101,6 +101,7 @@ class Response {
     setError(error) {
         this._body.errorCode = ErrorRepsonse[error].errorCode
         this._body.errorMessage = ErrorRepsonse[error].errorMessage
+        return this;
     }
 
     get body() {
