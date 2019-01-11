@@ -1,6 +1,6 @@
 const HwBot = require('../hwbot');
 
-const hwbot = new HwBot();
+const hwbot = new HwBot('darwin', 'darwin');
 
 // define middleware
 hwbot.use(async (ctx, next) => {
