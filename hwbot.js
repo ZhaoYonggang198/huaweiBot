@@ -6,7 +6,6 @@ const debug   = require('debug')('hwbot:hwbot');
 
 class HwBot {
     constructor(AccessKey = null, SecretKey = null) {
-        this.appId = appId;
         this.middlewares = [];
         this.intentListeners = {};
         this.textListeners   = {};
@@ -92,9 +91,6 @@ class HwBot {
         let that = this;
         return async function(ctx) {
             try {
-                if ((that.appId !== null)&&(ctx.request.appId != that.appId)) {
-                    throw(new Error(`appId(${ctx.request.appId}) does not match the aixbot(${that.appId})`));
-                }
                 await that.handle(ctx);
                 return ctx.body;
             } catch(err) {
