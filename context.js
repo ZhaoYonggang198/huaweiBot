@@ -19,14 +19,12 @@ class Context {
 delegate(Context.prototype, 'res')
     .method('speak')
     .method('reply')
-    .method('query')
-    .method('directiveAudio')
-    .method('directiveTts')
-    .method('directiveRecord')
-    .method('display')
-    .method('playMsgs')
-    .method('launchQuickApp')
-    .method('launchApp')
+    .method('playAudio')
+    .method('stopAudio')
+    .method('setPlayMode')
+    .method('setAuthStatus')
+    .method('appendToCommands')
+    .method('closeSession')
     .getter('body');
 
 module.exports = Context;
