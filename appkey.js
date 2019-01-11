@@ -3,7 +3,6 @@ class Appkey {
   constructor(accessKey, secretKey) {
     this.accessKey = accessKey
     this.secretKey = secretKey
-    this.hmac = crypto.createHmac('sha256', secretKey)
   }
   verify({accesskey, sign, ts}) {
     if (!this.accessKey && !this.secretKey) {
@@ -19,7 +18,7 @@ class Appkey {
       return false
     }
 
-    const calcSign = this.hmac.update(ts).digest().toString('base64')
+    const calcSign = crypto.createHmac('sha256', this.secretKey).update(ts).digest().toString('base64')
 
     return this.accessKey === accesskey && calcSign === sign
   }
