@@ -1,11 +1,12 @@
 const compose = require('koa-compose');
 const Context = require('./context');
 const Request = require('./request');
-const ErrorReponse = require('./error')
+const Auth = require('./auth')
 const debug   = require('debug')('hwbot:hwbot');
 
 class HwBot {
     constructor(AccessKey = null, SecretKey = null) {
+        this.auth = new Auth(AccessKey, SecretKey)
         this.middlewares = [];
         this.intentListeners = {};
         this.textListeners   = {};
@@ -41,7 +42,10 @@ class HwBot {
         }
         let that = this;
         return (req, res) => {
-            debug(req.headers)
+            if (!this.auth.verify(req.headers)) {
+                responseJson(res, {cause : 'Unsupported signature method'}, 401)
+                return;
+            }
             if (!req.headers['content-type']
                 || req.headers['content-type'].indexOf('application/json') === -1) {
                 responseJson(res, {cause : 'incorrect content type, wish json!'}, 404);
