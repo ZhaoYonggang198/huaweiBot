@@ -1,3 +1,4 @@
+const ErrorRepsonse = require('./error')
 
 class Response {
     constructor() {
@@ -11,8 +12,8 @@ class Response {
                 },
                 isEndSession: false
             },
-            errorCode: "200",
-
+            errorCode: "0",
+            errorMessage: "ok"
         }
     }
 
