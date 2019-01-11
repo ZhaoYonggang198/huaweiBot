@@ -98,7 +98,8 @@ class HwBot {
                 return ctx.body;
             } catch(err) {
                 if (that.errorListener) {
-                    that.errorListener(err, ctx);
+                    await that.errorListener(err, ctx);
+                    throw err
                 } else {
                     debug('Unhandled error occurred!')
                     throw err;
