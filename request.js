@@ -60,8 +60,8 @@ class Request {
         return this.utterance.type;
     }
 
-    get utteranceOrigin() {
-        return this.utterance.origin
+    get utteranceOriginal() {
+        return this.utterance.original
     }
 }
 

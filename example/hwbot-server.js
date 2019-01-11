@@ -25,7 +25,7 @@ hwbot.hears('你是谁', (ctx) => {
 
 // define regex handler
 hwbot.hears(/\W+/, (ctx) => {
-    ctx.speak(ctx.utterance.origin).closeSession();
+    ctx.speak(ctx.request.utterance.original).closeSession();
 });
 
 // define error handler
@@ -35,7 +35,7 @@ hwbot.onError((err, ctx) => {
 });
 
 hwbot.onDefault((ctx) => {
-    ctx.speak(ctx.utterance.origin).closeSession();
+    ctx.speak(ctx.request.utterance.original).closeSession();
 })
 // run http server
 hwbot.run(8080);

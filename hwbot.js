@@ -108,17 +108,17 @@ class HwBot {
     }    
 
     async handle(ctx) {
-        let orgin = ctx.request.utterance.origin
+        let original = ctx.request.utterance.original
         let utteranceType = ctx.request.utterance.type
         if (await this.doHandle(ctx, this.intentListeners[ctx.request.intentName], () => {
             return this.intentListeners.hasOwnProperty(ctx.request.intentName);
         })) return;
-        if (await this.doHandle(ctx, this.textListeners[orgin], () => {
+        if (await this.doHandle(ctx, this.textListeners[original], () => {
             return utteranceType === 'text' 
-            && this.textListeners.hasOwnProperty(orgin);
+            && this.textListeners.hasOwnProperty(original);
         })) return;
         if (await this.doHandle(ctx, 
-            this.getRegExpHandler(orgin)),
+            this.getRegExpHandler(original)),
             utteranceType === 'text') return;
         if (await this.doHandle(ctx, this.defaultListener)) return;
     }
