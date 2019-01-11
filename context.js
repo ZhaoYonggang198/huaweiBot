@@ -25,6 +25,7 @@ delegate(Context.prototype, 'res')
     .method('setAuthStatus')
     .method('appendToCommands')
     .method('closeSession')
+    .method('setError')
     .getter('body');
 
 module.exports = Context;

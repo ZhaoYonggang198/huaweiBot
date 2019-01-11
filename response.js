@@ -10,7 +10,8 @@ class Response {
                     text: "",
                     ssml: ""
                 },
-                isEndSession: false
+                isEndSession: false,
+                commands: []
             },
             errorCode: "0",
             errorMessage: "ok"
@@ -95,6 +96,11 @@ class Response {
     closeSession(flag = true) {
         this._body.reply.isEndSession = flag;
         return this;
+    }
+
+    setError(error) {
+        this._body.errorCode = ErrorRepsonse[error].errorCode
+        this._body.errorMessage = ErrorRepsonse[error].errorMessage
     }
 
     get body() {

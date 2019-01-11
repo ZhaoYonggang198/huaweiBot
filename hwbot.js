@@ -1,6 +1,7 @@
 const compose = require('koa-compose');
 const Context = require('./context');
 const Request = require('./request');
+const ErrorReponse = require('./error')
 const debug   = require('debug')('hwbot:hwbot');
 
 class HwBot {

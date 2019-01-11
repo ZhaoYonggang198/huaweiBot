@@ -31,7 +31,7 @@ hwbot.hears(/\W+/, (ctx) => {
 // define error handler
 hwbot.onError((err, ctx) => {
     console.error(`error occurred: ${err}`);
-    ctx.reply('内部错误，稍后再试').closeSession();
+    ctx.reply('内部错误，稍后再试').setError('Server_internal_error').closeSession();
 });
 
 hwbot.onDefault((ctx) => {
