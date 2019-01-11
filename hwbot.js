@@ -99,7 +99,6 @@ class HwBot {
             } catch(err) {
                 if (that.errorListener) {
                     await that.errorListener(err, ctx);
-                    throw err
                 } else {
                     debug('Unhandled error occurred!')
                     throw err;
@@ -109,15 +108,16 @@ class HwBot {
     }    
 
     async handle(ctx) {
+        let orgin = ctx.request.utterance.origin
         if (await this.doHandle(ctx, this.intentListeners[ctx.request.intentName], () => {
             return this.intentListeners.hasOwnProperty(ctx.request.intentName);
         })) return;
-        if (await this.doHandle(ctx, this.textListeners[ctx.utterance.origin], () => {
+        if (await this.doHandle(ctx, this.textListeners[orgin], () => {
             return ctx.utterance.type === 'text' 
-            && this.textListeners.hasOwnProperty(ctx.utterance.origin);
+            && this.textListeners.hasOwnProperty(orgin);
         })) return;
         if (await this.doHandle(ctx, 
-            this.getRegExpHandler(ctx.utterance.origin)),
+            this.getRegExpHandler(orgin)),
             ctx.utterance.type === 'text') return;
         if (await this.doHandle(ctx, this.defaultListener)) return;
     }
