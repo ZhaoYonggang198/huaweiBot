@@ -1,11 +1,11 @@
 {
-    "name": "aixbot",
-    "version": "1.1.0",
-    "description": "Robot SDK for XiaoAi Public Platform",
-    "author": "magicbowen <e.wangbo@gmail.com>",
+    "name": "hwbot",
+    "version": "0.1.0",
+    "description": "Robot SDK for Huawei Public Platform",
+    "author": "zhao yonggang <yonggang.zhao@gmail.com>",
     "license": "MIT",
-    "homepage": "https://github.com/MagicBowen/aixbot#readme",
-    "main": "aixbot.js",
+    "homepage": "https://github.com/ZhaoYonggang198/huaweibot#readme",
+    "main": "hwbot.js",
     "scripts": {
         "test": "mocha"
     },
@@ -14,10 +14,10 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/magicbowen/aixbot.git"
+        "url": "https://github.com/ZhaoYonggang198/huaweiBot.git"
     },
     "bugs": {
-        "url": "https://github.com/MagicBowen/aixbot/issues"
+        "url": "https://github.com/ZhaoYonggang198/huaweiBot/issues"
     },
     "dependencies": {
         "debug": "^3.1.0",

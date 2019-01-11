@@ -5,7 +5,7 @@ const ErrorReponse = require('./error')
 const debug   = require('debug')('hwbot:hwbot');
 
 class HwBot {
-    constructor(appId = null) {
+    constructor(AccessKey = null, SecretKey = null) {
         this.appId = appId;
         this.middlewares = [];
         this.intentListeners = {};
@@ -42,6 +42,7 @@ class HwBot {
         }
         let that = this;
         return (req, res) => {
+            debug(req.headers)
             if (!req.headers['content-type']
                 || req.headers['content-type'].indexOf('application/json') === -1) {
                 responseJson(res, {cause : 'incorrect content type, wish json!'}, 404);
