@@ -44,7 +44,7 @@ class Request {
     }
 
     get intentName() {
-        if (!this.intentzz) return null;
+        if (!this.intent) return null;
         return this.intent.name;
     }
 
