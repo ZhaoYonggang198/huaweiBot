@@ -118,9 +118,7 @@ class HwBot {
             return utteranceType === 'text' 
             && this.textListeners.hasOwnProperty(original);
         })) return;
-        if (await this.doHandle(ctx, 
-            this.getRegExpHandler(original)),
-            utteranceType === 'text') return;
+        if (await this.doHandle(ctx, this.getRegExpHandler(original))) return;
         if (await this.doHandle(ctx, this.defaultListener)) return;
     }
 
