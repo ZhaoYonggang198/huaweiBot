@@ -3,7 +3,7 @@ class Appkey {
   constructor(accessKey, secretKey) {
     this.accessKey = accessKey
     this.secretKey = secretKey
-    this.hmac = crypto('sha265', secretKey)
+    this.hmac = crypto.createHmac('sha256', secretKey)
   }
   verify({accesskey, sign, ts}) {
     if (!this.accessKey && !this.secretKey) {
