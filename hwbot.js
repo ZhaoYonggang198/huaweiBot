@@ -1,12 +1,12 @@
 const compose = require('koa-compose');
 const Context = require('./context');
 const Request = require('./request');
-const Auth = require('./auth')
+const Appkey = require('./appkey')
 const debug   = require('debug')('hwbot:hwbot');
 
 class HwBot {
     constructor(AccessKey = null, SecretKey = null) {
-        this.auth = new Auth(AccessKey, SecretKey)
+        this.appkey = new Appkey(AccessKey, SecretKey)
         this.middlewares = [];
         this.intentListeners = {};
         this.textListeners   = {};
@@ -42,7 +42,7 @@ class HwBot {
         }
         let that = this;
         return (req, res) => {
-            if (!this.auth.verify(req.headers)) {
+            if (!this.appkey.verify(req.headers)) {
                 responseJson(res, {cause : 'Unsupported signature method'}, 401)
                 return;
             }

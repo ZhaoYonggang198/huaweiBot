@@ -24,3 +24,5 @@ class Appkey {
     return this.accessKey === accesskey && calcSign === sign
   }
 }
+
+module.exports = Appkey
