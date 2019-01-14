@@ -1,10 +1,12 @@
 const crypto = require('crypto')
+const debug   = require('debug')('hwbot:appkey');
 class Appkey {
   constructor(accessKey, secretKey) {
     this.accessKey = accessKey
     this.secretKey = secretKey
   }
   verify({accesskey, sign, ts}) {
+    debug(`accesskey:${accesskey}, sign: ${sign}, ts: ${ts}`)
     if (!this.accessKey && !this.secretKey) {
       return true
     }
