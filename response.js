@@ -20,7 +20,7 @@ class Response {
 
     speak(text) {
         this._body.reply.speech = {
-            type: 'text',
+            type: 'Text',
             text,
             ssml: ''
         }

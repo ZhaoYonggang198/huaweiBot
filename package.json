@@ -1,6 +1,6 @@
 {
     "name": "hwbot",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "description": "Robot SDK for Huawei Public Platform",
     "author": "zhao yonggang <yonggang.zhao@gmail.com>",
     "license": "MIT",
